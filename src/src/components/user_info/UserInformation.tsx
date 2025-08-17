@@ -1,9 +1,19 @@
 import styles from './UserInformation.module.css'
 
 
-function UserInformation() {
+interface StepProps {
+  onNext?: () => void;
+  onPrev?: () => void;
+  isFirstStep?: boolean;
+  isLastStep?: boolean;
+}
+
+const UserInformation: React.FC<StepProps> = ({isLastStep}) => {
     return (
         <>
+        <div className={styles.stepContainer}>
+            <h2 className={styles.stepTitle}>Your Details</h2>
+            <p className={styles.stepDescription}>Please fill in your information below.</p>
             <div className={styles.userInformationContainer}>
                 <div className={styles.userInformation}>
                     <form className={styles.infoForm}>
@@ -86,6 +96,17 @@ function UserInformation() {
                     </form>
                 </div>
             </div>
+              <div>
+            
+        </div>
+        <div className={styles.navigation}>
+            {isLastStep && (
+            <button className={`${styles.button} ${styles.confirmButton}`}>
+                Submit
+            </button>
+            )}
+        </div>
+        </div>
         </>
         
     )

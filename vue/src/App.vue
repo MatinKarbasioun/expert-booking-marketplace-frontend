@@ -18,26 +18,7 @@ const handleUserInfoUpdate = (info: UserInfo) => {
   userInfo.value = info;
 };
 
-const sendData = () => {
-  console.warn(userInfo.value)
-  const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        "timeSlot": appointmentDateTime.value,
-        "userInfo": userInfo.value,
-        "services": selectedServices.value
-      })
-  };
-  fetch('http://127.0.0.1:8000/v1/appointments/add', requestOptions).
-    then((response) => { if (response.ok) {
-    alert('Appointment scheduled successfully!')
-    return response.json();
-  }
-  alert('Appointment scheduled Unsuccessfully!')
-        throw new Error('Something went wrong');}).
-  catch(() => alert('Appointment scheduled Unsuccessfully!'))
-};
+
 
 // "client": {
 //     "name": "string",
